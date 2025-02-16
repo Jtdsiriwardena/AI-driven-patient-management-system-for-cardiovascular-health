@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardioClinic</title> 
+    <!-- heart Icon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/heartbeat-solid.svg') }}" type="image/x-icon">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <!-- Css File Link -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+    <!--Home start------------------------------------->
+    <div class="header">
+        <a href="#" class="top-heading"><i class="fas fa-heartbeat"></i> Cardio<span>Clinic.</span></a>
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#services">Services</a>
+            <a href="#about">about</a>
+            <a href="#blogs">blogs</a>
+        </nav>
+        <div id="menu-btn" class="fas fa-bars"></div>
+    </div>
+
+    <section class="home" id="home">
+        <div class="image">
+            <img src="{{ url_for('static', filename='images/home-img.svg') }}" alt="home-img.svg">
+        </div>
+        <div class="content">
+            <h3>Empowering Hearts, Enriching Lives!</h3>
+            <p>At our Cardio<span>Clinic.</span> programme, we're dedicated to fortifying hearts and fostering well-being for all.
+            we're here to champion heart health for every citizen, ensuring a resilient and thriving community.</p>
+            <a href="/login" class="btn">Login Here <span class="fas fa-chevron-right"></span></a>
+
+        </div>
+    </section>
+    <!--Home ends-------------------------------------------------->
+
+    <!--Our service starts-------------------------------------------------->
+
+    <section class="services" id="services">
+        <h1 class="heading">our <span>services</span></h1>
+
+        <div class="slider-container">
+        <div class="box-container">
+            <div class="box">
+                <i class="fas fa-search"></i>
+                <h3 style="text-align: center;">ECG Prediction</h3>
+                <img src="{{ url_for('static', filename='images/pred3.jpg') }}" alt="">
+                <p>Our ECG prediction service utilizes advanced technology to analyze heart rhythms swiftly, aiding in the early detection of potential cardiac issues.</p>
+            </div>
+            <div class="box">
+                <i class="fas fa-video"></i>
+                <h3 style="text-align: center;">Tele Consultations</h3>
+                <img src="{{ url_for('static', filename='images/consul2.jpg') }}" alt="">
+                <p>Access expert cardiovascular advice remotely through our teleconsultation service, ensuring timely support and personalized care from the comfort of your home.</p>
+                
+            </div>
+            <div class="box">
+                <i class="fas fa-robot"></i>
+                <h3 style="text-align: center;">Chatbot</h3>
+                <img src="{{ url_for('static', filename='images/bot2.jpg') }}" alt="">
+                <p>Get instant answers to your heart health queries with our AI-powered chatbot, providing personalized guidance and valuable insights anytime, anywhere.</p>
+                
+            </div>
+            <div class="box">
+                <i class="fas fa-prescription-bottle"></i>
+                <h3 style="text-align: center;">E Prescription</h3>
+                <img src="{{ url_for('static', filename='images/pres5.jpg') }}" alt="">
+                <p>Say goodbye to paper prescriptions with our electronic prescription service, making medication management convenient and hassle-free for patients and providers alike.</p>
+            </div>
+
+            <div class="box">
+                <i class="fas fa-prescription-bottle"></i>
+                <h3 style="text-align: center;">Risk Prediction</h3>
+                <img src="{{ url_for('static', filename='images/risk1.jpg') }}" alt="">
+                <p>Our risk prediction tool assesses your cardiovascular health status efficiently, enabling proactive measures to mitigate potential risks and safeguard your heart health</p>
+            </div>
+        </div>
+        
+        <button class="prev-btn">&#10094;</button>
+    <button class="next-btn">&#10095;</button>
+    </div>
+    </section>
+    <!--our services----------------------------------------------->
+
+    <!--About us start-------------------------------------------------->
+    <section class="about" id="about">
+        <h1 class="heading"><span>about</span> us</h1>
+        <div class="row">
+            <div class="image">
+                <img src="{{ url_for('static', filename='images/about-img.svg') }}" alt="about-img.svg">
+            </div>
+            <div class="ab-content">
+<h3>Our Mission</h3>
+<p>At CardioClinic, our mission is to prioritize and enhance cardiovascular health. We are dedicated to providing personalized care and support, tailored to the individual needs of each patient. Through comprehensive assessments, education, and collaborative interventions, we empower individuals to lead heart-healthy lives and reduce the risk of cardiovascular disease.</p>
+<h3>Our Vision</h3>
+<p>Our vision is to be the leading provider of cardiovascular care, recognized for excellence in preventive measures, innovative treatments, and compassionate support. We aspire to create a community where every individual has the knowledge, resources, and motivation to prioritize their cardiovascular health, leading to a healthier and happier future for all.</p>
+                
+            </div>
+        </div>
+    </section>
+    <!--About us ends------------------------------------------------->
+
+
+
+    <!--FAQ section start---------------------------------------->
+
+    <div class="faqSection">
+        <h1 class="heading"><span>FAQ</span> Guide</h1>
+        <div class="content-wrapper">
+            <div class="image">
+                <img src="{{ url_for('static', filename='images/faq.jpg') }}" alt="faq">
+            </div>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">What is Cardiovascular Health?</span><span class="icon" aria-hidden="true"></span></button>
+            <div class="accordion-content">
+              <p>Cardiovascular health refers to the overall well-being of your heart and blood vessels. It encompasses various factors, including heart function, blood pressure, cholesterol levels, and lifestyle choices, all of which contribute to the health of your cardiovascular system.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">How does AI contribute to Cardiovascular Health on this platform?</span><span class="icon" aria-hidden="true"></span></button>
+            <div class="accordion-content">
+              <p>Our platform utilizes artificial intelligence (AI) to enhance cardiovascular health care in several ways. AI algorithms analyze ECG images to provide accurate predictions and insights into cardiac conditions, assisting healthcare providers in making informed decisions about patient care.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">What is Telemedicine, and how does it benefit cardiovascular patients?<span class="icon" aria-hidden="true"></span></button>
+            <div class="accordion-content">
+              <p>Telemedicine allows patients to consult with healthcare professionals remotely, using telecommunications technology. On our platform, patients can access teleconsultation services with cardiovascular specialists, facilitating convenient and timely access to expert medical diagnosis, and treatments</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">What is E-Prescription, and how does it work?</span><span class="icon" aria-hidden="true"></span></button>
+            <div class="accordion-content">
+              <p>E-Prescription enables healthcare providers to electronically send prescriptions to pharmacies, eliminating the need for paper prescriptions. Patients can receive prescribed medications efficiently and securely, streamlining the prescription process and enhancing medication adherence.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title">How does the Chatbot Facility assist patients with cardiovascular health queries?</span><span class="icon" aria-hidden="true"></span></button>
+            <div class="accordion-content">
+              <p>Our chatbot facility provides a convenient and accessible channel for patients to ask questions and receive accurate information about cardiovascular health. The chatbot utilizes AI technology to provide personalized responses, empowering patients to make informed decisions about their health.</p>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+<!--FAQ section ends------------------------------------------------->
+
+
+
+<!--blogs section starts---------------------------------------------->
+    <section class="blogs" id="blogs">
+        <h1 class="heading">our <span>blogs</span></h1>
+        <div class="box-container">
+            
+            <!--first blog-->
+            <div class="box">
+                <div class="image">
+                    <img src="{{ url_for('static', filename='images/blog-1.jpg') }}" alt="blog-1.jpg">
+                </div>
+                <div class="content">
+                    <div class="icon">
+                        <a href="#"><i class="fas fa-calendar"></i> 1st May, 2021</a>
+                        <a href="#"><i class="fas fa-user"></i> by admin</a>
+                    </div>
+                    <h3>AI-Powered Diagnosis Revolutionizes Telemedicine</h3>
+                    <p>In the rapidly evolving landscape of telemedicine, artificial intelligence (AI) is emerging as a transformative force ...</p>
+                    <a href="#blogs" class="btn" onclick="showModal('modal1')">learn more <span class="fas fa-chevron-right"></span></a>
+                </div>
+            </div>
+            
+            <!-- Modal for the first blog -->
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="hideModal('modal1')">&times;</span>
+                    <div class="content-wrapper">
+                        <div class="image">
+                            <img src="{{ url_for('static', filename='images/blog-1.jpg') }}" alt="blog-1.jpg">  
+                        </div>
+                        <div class="text">
+                            <h2>AI-Powered Diagnosis Revolutionizes Telemedicine</h2>
+                            <p>In the rapidly evolving landscape of telemedicine, artificial intelligence (AI) 
+                                is emerging as a transformative force, reshaping how medical diagnoses are made and 
+                                treatments are administered. Leveraging advanced algorithms and machine learning, AI systems can 
+                                analyze vast amounts of patient data, from medical records to diagnostic images, with unprecedented 
+                                speed and accuracy. This enables healthcare providers to deliver timely and precise diagnoses remotely, 
+                                bridging geographical barriers and improving patient outcomes. From identifying subtle anomalies in radiology 
+                                scans to predicting disease progression based on genetic markers, AI-driven diagnostics are revolutionizing telemedicine, 
+                                empowering healthcare professionals to deliver personalized care tailored to each patient's unique needs.
+                                <br> <br> 
+                                Moreover, AI-driven diagnostics not only enhance the efficiency and accuracy of medical diagnoses but also have the 
+                                potential to revolutionize preventive healthcare strategies. By analyzing longitudinal patient data and identifying early 
+                                warning signs of disease onset or progression, AI algorithms can empower healthcare providers to implement proactive interventions 
+                                and personalized preventive measures.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- second blog-->
+            <div class="box">
+                <div class="image">
+                    <img src="{{ url_for('static', filename='images/blog-2.jpg') }}" alt="blog-2.jpg">
+                </div>
+                <div class="content">
+                    <div class="icon">
+                        <a href="#"><i class="fas fa-calendar"></i> 2nd May, 2021</a>
+                        <a href="#"><i class="fas fa-user"></i> by admin</a>
+                    </div>
+                    <h3>Navigating the Ethical Terrain of AI in Telemedicine</h3>
+                    <p>While AI holds immense promise for revolutionizing telemedicine, 
+                        its widespread adoption also raises important ethical considerations ...</p>
+                    <a href="#blogs" class="btn" onclick="showModal('modal2')">learn more <span class="fas fa-chevron-right"></span></a>
+                </div>
+            </div>
+            
+            <!-- Modal for the second blog -->
+            <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="hideModal('modal2')">&times;</span>
+                    <div class="content-wrapper">
+                        <div class="image">
+                            <img src="{{ url_for('static', filename='images/blog-2.jpg') }}" alt="blog-2.jpg">  
+                        </div>
+                        <div class="text">
+                            <h2>Navigating the Ethical Terrain of AI in Telemedicine</h2>
+                            <p>While AI holds immense promise for revolutionizing telemedicine, 
+                                its widespread adoption also raises important ethical considerations that must be 
+                                carefully navigated. From data privacy concerns to algorithmic bias, the ethical terrain of AI 
+                                in telemedicine is complex and multifaceted. As AI systems increasingly influence medical decision-making, ensuring transparency, accountability,
+                                 and fairness becomes paramount. Moreover, the potential for AI to exacerbate existing healthcare disparities 
+                                 demands proactive measures to mitigate inequities and promote inclusivity. By engaging in thoughtful dialogue and robust 
+                                 ethical frameworks, stakeholders can harness the transformative power of AI in telemedicine while safeguarding patient rights 
+                                 and promoting equitable access to quality care. <br> <br>
+                                 Furthermore, as AI algorithms continue to evolve and integrate into telemedicine practices, concerns regarding the interpretability and explainability of AI-driven diagnoses emerge. Ensuring that patients and healthcare providers can understand and trust the decisions made by AI systems is crucial for fostering confidence in telemedicine. Additionally, there is a pressing need to address issues of algorithmic accountability and liability in the event of errors or adverse outcomes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <!--third blog-->
+            <div class="box">
+                <div class="image">
+                    <img src="{{ url_for('static', filename='images/blog-3.jpg') }}" alt="blog-3.jpg">
+                </div>
+                <div class="content">
+                    <div class="icon">
+                        <a href="#"><i class="fas fa-calendar"></i> 3rd May, 2021</a>
+                        <a href="#"><i class="fas fa-user"></i> by admin</a>
+                    </div>
+                    <h3>Empowering Patients Through AI-Driven Telemedicine Solutions</h3>
+                    <p>In the era of AI-driven telemedicine, patients are empowered like never before, gaining greater control over their healthcare journey ...</p>
+                    <a href="#blogs" class="btn" onclick="showModal('modal3')">learn more <span class="fas fa-chevron-right"></span></a>
+                </div>
+            </div>
+            
+            <!-- Modal for the third blog -->
+            <div id="modal3" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="hideModal('modal3')">&times;</span>
+                    <div class="content-wrapper">
+                        <div class="image">
+                            <img src="{{ url_for('static', filename='images/blog-3.jpg') }}" alt="blog-3.jpg">  
+                        </div>
+                        <div class="text">
+                            <h2>Empowering Patients Through AI-Driven Telemedicine Solutions</h2>
+                            <p>In the era of AI-driven telemedicine, patients are empowered like never before, 
+                                gaining greater control over their healthcare journey and access to personalized medical insights. 
+                                Through innovative AI-powered platforms, patients can remotely consult with healthcare providers, 
+                                receive real-time health monitoring, and access tailored treatment recommendations from the comfort of their homes. 
+                                By harnessing the power of AI to analyze patient data and deliver actionable insights, telemedicine solutions empower individuals 
+                                to actively participate in their healthcare decisions, leading to improved health outcomes and enhanced overall well-being. 
+                                From chronic disease management to preventive care, AI-driven telemedicine is democratizing healthcare, putting patients at 
+                                the center of the equation and transforming the future of medicine.
+                            <br> <br>
+                            With AI-driven telemedicine, the traditional barriers to accessing specialized medical expertise are 
+                            being dismantled, enabling patients in remote or underserved areas to receive high-quality care previously 
+                            out of reach. By leveraging AI algorithms to triage patients, streamline consultations, and optimize treatment plans, 
+                            telemedicine platforms empower individuals to overcome geographical constraints and disparities in healthcare access.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+    <!--Blogs section ends---------------------------------------------------->
+
+
+    <!--Footer start--------------------------------------------------------->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#"> <i class="fas fa-chevron-right"></i> home</a>
+                <a href="#"> <i class="fas fa-chevron-right"></i> services</a>
+                <a href="#"> <i class="fas fa-chevron-right"></i> about</a>
+                <a href="#"> <i class="fas fa-chevron-right"></i> blogs</a>
+            </div>
+            <div class="box">
+                <h3>our services</h3>
+                <a href="#services"> <i class="fas fa-chevron-right"></i> ecg prediction</a>
+                <a href="#services"> <i class="fas fa-chevron-right"></i> tele consultation</a>
+                <a href="#services"> <i class="fas fa-chevron-right"></i> chatbot</a>
+                <a href="#services"> <i class="fas fa-chevron-right"></i> e prescription</a>
+                <a href="#services"> <i class="fas fa-chevron-right"></i> risk prediction</a>
+            </div>
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#"> <i class="fas fa-phone"></i> 034-22-66564</a>
+                <a href="#"> <i class="fas fa-phone"></i> 034-22-54376</a>
+                <a href="#"> <i class="fas fa-envelope"></i> cardioclinic.info.com</a>
+                <a href="#"> <i class="fas fa-envelope"></i> cardioclininc.info.@gmail.com</a>
+                <a href="#"> <i class="fas fa-map-marker-alt"></i>  Horana, Sri Lanka - 10226</a>
+            </div>
+
+        </div>
+    </section>
+    <!--Footer ends---------------------------------------------------->
+
+
+
+    <!--Predict risk area---------------------------------------------->
+    <button class="floating-btn" onclick="togglePopup()">Predict Risk</button>
+    <div id="overlay" class="overlay"></div>
+
+    <!--Popup area-->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="togglePopup()">&times;</span>
+            <div class="risk-container">
+                <div class="risk-column">
+                    <h1 id="risk-heading">10-Year CVD Risk Predictor</h1> <br>
+                    
+                    <form action="/predict" method="post" id="prediction-form" onsubmit="event.preventDefault(); submitForm()">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" required><br><br>
+                        
+                        <label for="gender">Gender:</label>
+                        <select id="gender" name="gender" required>
+                            <option value="1">Male</option>
+                            <option value="0">Female</option>
+                        </select><br><br>
+                        
+                        <label for="current_smoker">Current Smoker:</label>
+                        <select id="current_smoker" name="current_smoker" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select><br><br>
+                        
+                        <label for="cigs_per_day">Cigarettes Per Day:</label>
+                        <input type="number" id="cigs_per_day" name="cigs_per_day" required><br><br>
+                        
+                        <label for="bp_meds">Blood Pressure Medication:</label>
+                        <select id="bp_meds" name="bp_meds" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select><br><br>
+                    </div>
+                    <div class="risk-column">
+                        <label for="prevalent_stroke">Prevalent Stroke:</label>
+                        <select id="prevalent_stroke" name="prevalent_stroke" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select><br><br>
+                        
+                        <label for="prevalent_hyp">Prevalent Hypertension:</label>
+                        <select id="prevalent_hyp" name="prevalent_hyp" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select><br><br>
+                        
+                        <label for="diabetes">Diabetes:</label>
+                        <select id="diabetes" name="diabetes" required>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select><br><br>
+                        
+                        <label for="tot_chol">Total Cholesterol:</label>
+                        <input type="number" id="tot_chol" name="tot_chol" required><br><br>
+                        
+                        <label for="sys_bp">Systolic Blood Pressure:</label>
+                        <input type="number" id="sys_bp" name="sys_bp"><br><br>
+                        
+                        <input type="submit" value="Predict">
+                    </form>
+                    <p id="result" class="{{ result_color }}">{{ result }}</p>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
+
+    <!-- Custom alert box for display risk result-->
+    <div id="custom-alert" class="alert">
+        <span class="closebtn" onclick="closeAlert()">&times;</span>
+        <span id="alert-text"></span>
+    </div>
+
+    
+    <!-- js file link  -->
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e5e4e4;
+  color: #000000;
+  font-family: 'Arial', sans-serif;
+}
+  
+  .material-icons-outlined {
+    vertical-align: middle;
+    line-height: 1px;
+    font-size: 35px;
+  }
+
+  
+  
+  /* ---------- MAIN ---------- */
+  
+  .main-container {
+    grid-area: main;
+    overflow-y: auto;
+    padding: 20px 20px;
+    color: rgba(0, 0, 0, 0.95);
+  }
+  
+  .main-title {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .main-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 25px;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+  
+  .card:first-child {
+    background-color: #4174ff;
+    box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+  }
+  
+  .card:nth-child(2) {
+    background-color: #fa7916;
+    box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+  }
+  
+  .card:nth-child(3) {
+    background-color: #3c9440;
+    box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+  }
+  
+  .card:nth-child(4) {
+    background-color: #db3232;
+    box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+  }
+  
+  .card-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .card-inner > .material-icons-outlined {
+    font-size: 45px;
+  }
+  
+
+
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.calendar-container {
+    width: 70%;
+}
+
+.details-container {
+    width: 30%;
+    padding-left: 10px;
+}
+
+
+
+#calendar {
+    width: 100%;
+    height: 700px;
+    background-color: rgb(255, 255, 255); 
+    color: #000000;
+    padding: 8px;
+    border-radius: 7px;
+    box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+    border: 2px solid black;
+    
+}
+
+
+#appointment-details {
+    height: 700px;
+    border: 1px solid #dad9d9;
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid rgb(183, 182, 182);
+    border-radius: 7px;
+    margin-left: 5px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+    border: 2px solid black;
+}
+
+p {
+  margin-bottom: 30px; 
+}
+
+
+
+.label {
+  font-size: 20px;
+  color: #007bff;
+  font-weight: bold;
+}
+
+
+
+.value {
+  font-size: 18px;
+  color: #000000;
+}
+
+
+#finishButton{
+  background-color: #265532;
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 30%;
+  width: 150px;
+}
+
+
+#viewFinishedAppointments{
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-items: center;
+}
+
+
+
+#viewCancelledAppointments{
+  background-color: #ff0000;
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-items: center;
+}
+
+
+.fc-daygrid-weekday {
+    background-color: #f0f0f0; 
+    height: 50px; 
+    line-height: 50px;
+}
+
+
+.fc-daygrid-day {
+    height: 20px; 
+    line-height: 20px; 
+}
+
+.fc-event {
+    background-color: #5882ed; 
+    color: #fff; 
+    border: none;
+}
+
+.fc-event:hover {
+    background-color: #ffffff; 
+    color: #000000; 
+    border: 1px solid black;
+}
+
+.fc-event-title {
+    font-size: 14px;
+}
+
+
+.fc-prev-button, .fc-next-button {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
+.fc-day-today {
+    background-color: #ffffcc;
+}
+  
+  
+ 
+/*popup container for finished appointments--------------------------------*/
+  #popupContainer {
+    position: fixed;
+    color: rgb(0, 0, 0);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 80%; 
+    max-height: 80%; 
+    overflow-y: auto; 
+    z-index: 9999
+}
+
+#popupContainer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#popupContainer th{
+  padding: 8px;
+    border: 1px solid #ccc;
+    text-align: left;
+    background-color: #2e7d32;
+    color: white;
+}
+
+
+#popupContainer td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+
+
+
+/* Popup Container for cancelled appointments----------------------------*/
+.popup {
+  color: rgb(0, 0, 0);
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 80%; 
+  max-height: 80%;
+  overflow-y: auto; 
+  z-index: 9999;
+}
+
+.popup th{
+  padding: 8px;
+    border: 1px solid #ccc;
+    text-align: left;
+    background-color: #ff2b2b;
+    color: white;
+}
+
+.popup td{
+  padding: 8px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.popup-content {
+  position: relative;
+}
+
+
+
+/*patient count over month chart-------------------------------------*/
+
+.charts {
+  display: flex; 
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 5px;
+  border-radius: 8px;
+  margin-top: 30px;
+  box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+  border: 2px solid black;
+}
+
+.charts-card {
+  flex: 1; 
+  margin-right: 200px;
+  margin-bottom: 530px;
+  
+}
+.charts-card h1 {
+  margin-bottom: 10px;
+}

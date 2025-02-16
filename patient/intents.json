@@ -1,0 +1,91 @@
+{"intents": [
+        {"tag": "greeting",
+         "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
+         "responses": ["Hello", "Good to see you again", "Hi there, how can I help?"],
+         "context": [""]
+        },
+        {"tag": "goodbye",
+         "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
+         "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."],
+         "context": [""]
+        },
+        {"tag": "thanks",
+         "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+         "responses": ["My pleasure", "You're Welcome"],
+         "context": [""]
+        },
+        {
+            "tag": "definition",
+            "patterns": ["What is myocardial infarction?", "Can you explain myocardial infarction?", "Tell me about myocardial infarction.", "What does myocardial infarction mean?", "Define myocardial infarction.", "Explain myocardial infarction."],
+            "responses": ["Myocardial infarction, commonly known as a heart attack, occurs when blood flow to a part of the heart is blocked for a long enough time that part of the heart muscle is damaged or dies. It is often caused by a buildup of fatty deposits (plaque) in the coronary arteries. Symptoms may include chest pain or discomfort, upper body discomfort, shortness of breath, cold sweats, nausea, or lightheadedness. Immediate medical attention is crucial if you suspect a heart attack."],
+            "context": [""]
+          },
+          {
+            "tag": "definition",
+            "patterns": ["What is arrhythmia?", "Can you explain arrhythmia?", "Tell me about arrhythmia.", "What does arrhythmia mean?", "Define arrhythmia.", "Explain arrhythmia."],
+            "responses": ["Arrhythmia refers to an abnormal heart rhythm, where the heart beats too quickly, too slowly, or irregularly. It can occur due to various reasons, including heart disease, electrolyte imbalances, medications, or congenital heart defects. Common symptoms of arrhythmia include palpitations, dizziness, shortness of breath, chest discomfort, and fainting. Treatment options may include medications, lifestyle changes, medical procedures, or devices like pacemakers."],
+            "context": [""]
+          },
+          {
+            "tag": "common_symptoms_myocardial_infarction",
+            "patterns": ["What are the common symptoms of myocardial infarction?", "What are the symptoms of a heart attack?"],
+            "responses": ["Common symptoms of myocardial infarction may include chest pain or discomfort, upper body pain or discomfort in the arms, back, neck, jaw, or upper stomach, shortness of breath, nausea, lightheadedness, or cold sweats."],
+            "context": [""]
+        },
+        {
+            "tag": "common_symptoms_arrhythmia",
+            "patterns": ["What are the common symptoms of arrhythmia?"],
+            "responses": ["Common symptoms of arrhythmia may include palpitations, rapid heartbeat, slow heartbeat, chest discomfort, shortness of breath, dizziness, lightheadedness, fainting, or near fainting."],
+            "context": [""]
+        },
+        {
+            "tag": "heart_attack_prevention",
+            "patterns": ["What are some healthy lifestyle habits to prevent heart attacks?", "What are some healthy lifestyle habits to prevent myocardial infarction?", "How can I reduce my risk of heart attacks through lifestyle habits?", "How can I reduce my risk of myocardial infarction through lifestyle habits?", "Can you suggest habits to prevent heart attacks?", "What lifestyle changes can help prevent heart attacks?", "Can you suggest habits to prevent myocardial infarction?", "What lifestyle changes can help prevent myocardial infarction?"],
+            "responses": ["Absolutely! Here are some healthy lifestyle habits that can help prevent heart attacks: Maintaining a balanced diet, engaging in regular exercise, quitting smoking, managing stress, getting enough sleep, monitoring blood pressure, controlling cholesterol levels, limiting alcohol consumption, staying hydrated, and following up with your healthcare provider for regular check-ups."]
+          },
+          {
+            "tag": "arrhythmia_prevention",
+            "patterns": ["What are some healthy lifestyle habits to prevent arrhythmias?", "How can I reduce my risk of arrhythmias through lifestyle habits?", "Can you suggest habits to prevent arrhythmias?", "What lifestyle changes can help prevent arrhythmias?"],
+            "responses": ["Certainly! Here are some healthy lifestyle habits that can help prevent arrhythmias: Maintaining a balanced diet, engaging in regular exercise, managing stress, getting enough sleep, limiting caffeine intake, avoiding excessive alcohol consumption, quitting smoking, monitoring blood pressure, and following up with your healthcare provider for regular check-ups."]
+          },
+          {
+            "tag": "balanced_diet",
+            "patterns": ["How does a balanced diet help prevent heart attacks and arrhythmias?", "What role does diet play in reducing the risk of heart attacks and arrhythmias?", "Can you explain the importance of a balanced diet in preventing heart attacks and arrhythmias?", "How does a balanced diet help prevent myocardial infarction and arrhythmias?", "What role does diet play in reducing the risk of myocardial infarction and arrhythmias?", "Can you explain the importance of a balanced diet in preventing myocardial infarction and arrhythmias?"],
+            "responses": ["Maintaining a balanced diet is crucial for heart health. It helps lower cholesterol, blood pressure, and reduces the risk of obesity and diabetes, all of which are risk factors for heart attacks and arrhythmias. A diet rich in fruits, vegetables, whole grains, and lean proteins provides essential nutrients and antioxidants that support heart function and reduce inflammation."],
+            "context": ["lifestyle_habits"]
+          },
+          {
+            "tag": "exercise",
+            "patterns": ["How does exercise help prevent heart attacks and arrhythmias?", "What are the benefits of regular exercise for heart health?", "Can you explain the role of exercise in reducing the risk of heart attacks and arrhythmias?", "How does exercise help prevent myocardial infarction and arrhythmias?", "Can you explain the role of exercise in reducing the risk of myocardial infarction and arrhythmias?"],
+            "responses": ["Regular exercise strengthens the heart muscle, improves blood flow, lowers blood pressure, and helps maintain a healthy weight. It also reduces stress, improves sleep quality, and enhances overall cardiovascular function, reducing the risk of heart attacks and arrhythmias."],
+            "context": ["lifestyle_habits"]
+          },
+          {
+            "tag": "quit_smoking",
+            "patterns": ["How does quitting smoking help prevent heart attacks and arrhythmias?", "What are the risks of smoking in relation to heart health?", "Can you explain why quitting smoking is important for heart health?"],
+            "responses": ["Smoking damages the heart and blood vessels, increases blood pressure, decreases oxygen levels, and raises the risk of blood clots and plaque buildup in the arteries, leading to heart attacks and arrhythmias. Quitting smoking reduces these risks and improves overall heart health."],
+            "context": ["lifestyle_habits"]
+          },
+          {
+            "tag": "stress_management",
+            "patterns": ["How does stress management contribute to preventing heart attacks and arrhythmias?", "What role does stress play in heart health?", "Can you explain why managing stress is important for preventing heart attacks and arrhythmias?"],
+            "responses": ["Chronic stress increases blood pressure, heart rate, and inflammation, all of which can damage the heart and increase the risk of heart attacks and arrhythmias. Stress management techniques such as meditation, deep breathing, and exercise help reduce stress levels, promoting better heart health."],
+            "context": ["lifestyle_habits"]
+          },
+          {
+            "tag": "treatments",
+            "patterns": ["What are the common medications used to treat heart conditions?", "Can you explain the different treatments available for heart attacks and arrhythmias?", "How are heart attacks and arrhythmias treated?"],
+            "responses": ["Treatment for heart conditions may include medications such as blood thinners, beta-blockers, ACE inhibitors, or anti-arrhythmic drugs. In some cases, medical procedures like angioplasty, stent placement, or cardiac ablation may be necessary. Your healthcare provider will determine the most appropriate treatment based on your specific condition and medical history."]
+          },
+          {
+            "tag": "risk_factors",
+            "patterns": ["What are the common risk factors for heart attacks and arrhythmias?", "Can you explain the factors that increase the risk of heart attacks and arrhythmias?"],
+            "responses": ["Common risk factors for heart attacks and arrhythmias include high blood pressure, high cholesterol, diabetes, obesity, smoking, family history of heart disease, age, sedentary lifestyle, and excessive alcohol consumption."]
+          },
+          {
+            "tag": "emergency_response",
+            "patterns": ["What should I do if I suspect someone is having a heart attack?", "Can you explain the emergency response protocol for heart attacks?"],
+            "responses": ["If you suspect someone is having a heart attack, call emergency services immediately (e.g., 911 in the US). While waiting for help, have the person sit or lie down, loosen tight clothing, and provide aspirin if available. Do not delay seeking medical assistance."]
+          }
+           
+    ]}

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/prediction.css') }}">
+</head>
+<body>
+    <div class="container">
+
+        <!--Left column-->
+        <div class="left-side">
+            <div class="form-container">
+                <h1>Image Prediction</h1>
+                <form method="post" enctype="multipart/form-data" id="fetchPatientForm" class="upload-form">
+                    <input type="file" name="file" id="file" class="file-input">
+                    <label for="nic_number">NIC Number:</label>
+                    <input type="text" id="nic_number" name="nic_number" class="text-input"><br>
+                    <button type="button" id="fetchDetailsBtn" class="submit-btn">Fetch Details</button>
+                    <br>
+                    <br>
+                    <label for="first_name">First Name:</label>
+                    <input type="text" id="first_name" name="first_name" class="text-input"><br>
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" id="last_name" name="last_name" class="text-input"><br>
+                    <label for="gender">Gender:</label>
+                    <input type="text" id="gender" name="gender" class="text-input"><br>
+                    <label for="age">Age:</label>
+                    <input type="text" id="age" name="age" class="text-input"><br>
+                    <input type="submit" value="Upload" class="submit-btn">
+                    
+                </form>
+
+                
+            </div>
+        </div>
+
+        <!--Right column-->
+        <div class="right-side">
+            {% if filename %}
+            <div class="prediction-container">
+                <h1>Prediction Details</h1>
+                {% if filename %}
+                    <h2>Uploaded Image:</h2>
+                    <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image" class="uploaded-image" style="display: block; margin: 0 auto; border: 2px solid black;">
+                    {% endif %}
+                    <br>
+                    <br>
+                    <h2 style="margin-left: 200px; " >Prediction: <span style="color: rgb(253, 91, 91); ">{{ prediction }}</span></h2>
+                    <br>
+                    <br>
+                    <h2>NIC No: <span style="color: rgb(9, 110, 172);">{{ nic_number }}</span></h2>
+                    <h2>Name: <span style="color: rgb(9, 110, 172);">{{ first_name + ' ' + last_name }}</span></h2>
+                    <h2>Age: <span style="color: rgb(9, 110, 172);">{{ age }}</span></h2>
+                    <h2>Gender: <span style="color: rgb(9, 110, 172);">{{ gender }}</span></h2>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <!--Fetch patient details based on NIC-->
+    <script>
+        document.getElementById('fetchDetailsBtn').addEventListener('click', function() {
+        var nicNumber = document.getElementById('nic_number').value;
+
+        fetchPatientDetails(nicNumber)
+            .then(function(patient) {
+                // Update the input fields with the fetched data
+                document.getElementById('first_name').value = patient.first_name;
+                document.getElementById('last_name').value = patient.last_name;
+                document.getElementById('gender').value = patient.gender;
+                document.getElementById('age').value = patient.age;
+
+                document.getElementById('patientDetails');
+            })
+            
+    });
+
+    // Function to fetch patient details
+    function fetchPatientDetails(nicNumber) {
+        return fetch('/fetch_patient_details', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nic_number: nicNumber })
+        })
+        .then(response => response.json());
+    }
+    </script>
+
+</body>
+</html>
+{% endblock %}
+

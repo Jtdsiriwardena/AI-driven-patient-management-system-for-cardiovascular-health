@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+zUHqO5Jk3SEOLvvcwoqb1ELjcG9QQ2jGXhx2Vr" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+        
+</head>
+<body>
+
+  
+	<div class="container">
+		<div class="login-content">
+			<form action="/login" method="post">
+            
+				<h2 class="title">LOGIN</h2>
+				<img src="{{ url_for('static', filename='images/home-img.svg') }}" style="width: 300px; height: 300px;">
+
+				<!--email input-->
+           		<div class="input-div one">
+           		   <div class="i">
+           		   </div>
+           		   <div class="div">
+           		   	
+           		   		<input type="email" class="input" name="email" placeholder="Email">
+           		   </div>
+           		</div>
+
+				<!--password input-->
+           		<div class="input-div pass">
+           		   <div class="i"> 	
+           		   </div>
+           		   <div class="div">
+           		    	<input type="password" class="input" name="password" placeholder="Password">
+            	   </div>
+            	</div> <br>
+
+            	<input type="submit" class="btn" value="Login">
+				<!--sign up button-->
+                <p class="sign-para">Don't have an account? <a href="/signin" class="sign-area">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 0;
+  background-color: #e5e4e4;
+}
+
+
+table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+th {
+  background-color: #fbfe98;
+  padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #f2ff61;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.box{
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+.box p{
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+
+
+/* Style for the search input */
+#searchInput {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 300px;
+  transition: all 0.3s ease;
+  outline: none;
+  border-radius: 12px;
+}
+
+#searchInput:focus {
+  border-color: dodgerblue;
+  box-shadow: 0 0 5px dodgerblue;
+}
+  
+
+  ::placeholder {
+    color: #aaa;
+  }

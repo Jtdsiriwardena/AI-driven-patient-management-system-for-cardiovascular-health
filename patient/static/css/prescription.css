@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+/*main container*/
+.prescription {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.prescription h1{
+  margin-bottom: 30px;
+}
+
+h1 {
+  text-align: center;
+}
+
+/*patient details*/
+.info {
+  margin-bottom: 3px;
+  background-color: #fdfdfd;
+  padding: 10px;
+}
+
+.info label {
+color: black; 
+font-size: 18px;
+}
+
+.info ul {
+  list-style: none; 
+  padding: 0; 
+}
+
+/*user icons in patient details*/
+
+.info ul li:before {
+  content: "\f007";
+  font-family: "Font Awesome 5 Free"; 
+  font-weight: 900; 
+  margin-right: 5px; 
+  color: #000000; 
+
+}
+
+/* identifiers for fields in patient details*/
+.info #id,
+.info #firstName,
+.info #lastName,
+.info #age,
+.info #gender,
+.info #date {
+color: rgb(0, 0, 0);
+font-weight: bold;
+}
+
+
+/*medication area*/
+
+.medicine {
+  margin-bottom: 10px;
+}
+
+h5{
+  font-weight: bold;
+}
+.medicine table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.medicine th, .medicine td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.medicine th {
+  background-color: #dedcdc;
+}
+
+.heading h1 {
+color: rgb(0, 0, 0);
+margin-left: 30px;
+}
+
+.heading span {
+color: #16a085;
+}
+
+/*download button*/
+#download {
+float: right;
+margin-top: 10px;
+background-color: #167362;
+padding: 8px;
+color: white;
+border: none;
+border-radius: 5px;
+}
+
+footer {
+background-color: #333;
+color: #fff;
+text-align: center;
+padding: 10px 0;
+}

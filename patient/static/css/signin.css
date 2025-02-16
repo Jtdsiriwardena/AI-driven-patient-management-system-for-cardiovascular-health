@@ -1,0 +1,109 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f6;
+}
+
+
+/* Signup Section  */
+.signup {
+  margin-top: 20px;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+
+/* Container Styles */
+.container {
+  width: 500px;
+  margin: auto;
+  height: 300px;
+}
+
+/* Signup Content Styles */
+.signup-content {
+  display: flex;
+  align-items: center;
+}
+
+/* Signup Form area Styles */
+.signup-form {
+  flex: 1;
+  padding: 40px;
+  background-color: transparent;
+  border-radius: 8px;
+}
+
+/* Form Styles */
+
+.form-title {
+  font-size: 42px;
+  margin-bottom: 30px;
+  color: #333333;
+}
+
+/*input fields*/
+.form-group {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.form-group label {
+  margin-right: 10px; 
+  display: block;
+  margin-bottom: 5px;
+  color: #555555;
+  font-weight: 600;
+}
+
+.form-group input {
+  flex: 1;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  outline: none;
+}
+
+
+
+
+
+/*register button styles */
+.form-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: #129870;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.form-submit:hover {
+  background-color: #0a6d53;
+}
+
+
+/* i am already a member */
+.signup-image-link {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  color: #dc2c2c;
+  text-decoration: none;
+}
+

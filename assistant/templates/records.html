@@ -1,0 +1,166 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/records.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+
+</head>
+<body>
+    <h1>Records</h1>
+
+    <input type="text" id="searchInput" placeholder="&#128269; Search by NIC Number..." onkeyup="searchTable()">
+
+
+
+    <section class="main-record">
+        <div class="record-box">
+            <ul>
+                <li class="toggle-item" onclick="toggleSection('normal')" id="normalLink">Normal</li>
+               <li class="toggle-item" onclick="toggleSection('arr')" id="arrLink">Arrhythmia</li>
+               <li class="toggle-item" onclick="toggleSection('myo')" id="myoLink">Myocardial Infarction</li>
+
+            </ul>
+            <br>
+            <br>
+            <div class="record_tb" id="normal">
+                
+              
+                    <table id="normalTable">
+                        <tr>
+                            <th>ECG ID</th>
+                            <th>NIC No</th>
+                            <th>Patient Name</th>
+                            <th>Patient Gender</th>
+                            <th>Patient Age</th>
+                            <th>Prediction</th>
+                            <th>Prediction Time</th>
+                        </tr>
+                        {% for record in normal_records %}
+                        <tr>
+                            <td><a href="{{ url_for('view_image', filename=record.image_name) }}">{{ record.image_name }}</a></td>
+                            <td>{{ record.nic_number }}</td>
+                            <td>{{ record.first_name }} {{ record.last_name }}</td>
+                            <td>{{ record.gender }}</td>
+                            <td>{{ record.age }}</td>
+                            <td>{{ record.prediction }}</td>
+                            <td>{{ record.prediction_time }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+            </div>
+            <div class="record_tb" id="arr" style="display: none;">
+                   
+                    <table id="arrhythmiaTable">
+                        <tr>
+                            <th>ECG ID</th>
+                            <th>NIC No</th>
+                            <th>Patient Name</th>
+                            <th>Patient Gender</th>
+                            <th>Patient Age</th>
+                            <th>Prediction</th>
+                            <th>Prediction Time</th>
+                        </tr>
+                        {% for record in arrhythmia_records %}
+                        <tr>
+                            <td><a href="{{ url_for('view_image', filename=record.image_name) }}">{{ record.image_name }}</a></td>
+                            <td>{{ record.nic_number }}</td>
+                            <td>{{ record.first_name }} {{ record.last_name }}</td>
+                            <td>{{ record.gender }}</td>
+                            <td>{{ record.age }}</td>
+                            <td>{{ record.prediction }}</td>
+                            <td>{{ record.prediction_time }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+            </div>
+            <div class="record_tb" id="myo" style="display: none;">
+                    
+                    <table id="myocardialTable">
+                        <tr>
+                            <th>ECG ID</th>
+                            <th>NIC No</th>
+                            <th>Patient Name</th>
+                            <th>Patient Gender</th>
+                            <th >Patient Age </th>
+                            <th>Prediction</th>
+                            <th >Prediction Time </th>
+                        </tr>
+                        {% for record in myocardial_infarction_records %}
+                        <tr>
+
+                            <td><a href="{{ url_for('view_image', filename=record.image_name) }}">{{ record.image_name }}</a></td>
+                            <td>{{ record.nic_number }}</td>
+                            <td>{{ record.first_name }} {{ record.last_name }}</td>
+                            <td>{{ record.gender }}</td>
+                            <td>{{ record.age }}</td>
+                            <td>{{ record.prediction }}</td>
+                            <td>{{ record.prediction_time }}</td>
+
+                        </tr>
+                        {% endfor %}
+                    </table>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <script>
+
+function toggleSection(sectionId) {
+    var sections = document.getElementsByClassName("record_tb");
+    for (var i = 0; i < sections.length; i++) {
+        if (sections[i].id === sectionId) {
+            sections[i].style.display = "block";
+        } else {
+            sections[i].style.display = "none";
+        }
+    }
+
+    var listItems = document.querySelectorAll("ul li");
+    listItems.forEach(function(item) {
+        item.classList.remove("active");
+    });
+
+    var clickedItem = document.getElementById(sectionId + "Link");
+    clickedItem.classList.add("active");
+}
+
+
+
+function searchTable() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+
+    var tables = document.querySelectorAll(".course table");
+    tables.forEach(function(table) {
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    });
+}
+
+</script>
+
+</body>
+</html>
+{% endblock %}

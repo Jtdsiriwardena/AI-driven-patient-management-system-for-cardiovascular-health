@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}"> 
+    <title>User Profile</title>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <h1 style="text-align: center;">Doctor Profile</h1>
+            <h3><i class="fas fa-user"></i> Dr. {{ session['first_name'] }} </h3>
+            <a href="{{ url_for('index') }}" class="cross-icon"><i class="fas fa-times"></i></a>
+        </div>
+        <div class="profile-info">
+            <p><i class="fas fa-envelope"></i> Email: {{ doctor.medical_license_number }}</p>
+            <p><i class="fas fa-user"></i> First Name: {{ doctor.first_name }}</p>
+            <p><i class="fas fa-user"></i> Last Name: {{ doctor.last_name }}</p>
+            <p><i class="fas fa-calendar-alt"></i> Date of Birth: {{ doctor.dob }}</p>
+            <p><i class="fas fa-venus-mars"></i> Gender: {{ doctor.gender }}</p>
+            <p><i class="fas fa-phone"></i> Contact No: {{ doctor.contact_number }}</p>
+            <p><i class="fas fa-envelope"></i> Email: {{ doctor.email }}</p>
+            <p><i class="fas fa-user-md"></i> Specialty: {{ doctor.specialty }}</p>
+            <p><i class="fas fa-prescription-bottle"></i> DEA Number: {{ doctor.dea_number }}</p> 
+            <p><i class="fas fa-lock"></i> Password: {{ doctor.password }} <a id="change-password">Change password?</a></p>
+        </div>
+        <div class="password-form" style="display: none;">
+            <form action="/update_password" method="post">
+                <label for="new_password">New Password:</label>
+                <input type="password" id="new_password" name="new_password" required>
+                <button type="submit">Update Password</button>
+            </form>
+        </div>
+
+    </div>
+    <script>
+        // "Change password" feature
+        const changePasswordLink = document.getElementById('change-password');
+        const passwordInput = document.getElementById('new_password');
+        const passwordForm = document.querySelector('.password-form');
+    
+        changePasswordLink.addEventListener('click', function() {
+
+            passwordForm.style.display = passwordForm.style.display === 'none' ? 'block' : 'none';
+        });
+    
+        passwordInput.addEventListener('input', function() {
+            passwordInput.type = 'text';
+        });
+    
+        passwordInput.addEventListener('blur', function() {
+            passwordInput.type = 'password';
+        });
+    </script>
+    
+</body>
+</html>

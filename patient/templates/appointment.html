@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <section class="book" id="book">
+       
+        <div class="row">
+            <div class="image">
+            
+                <img src="{{ url_for('static', filename='images/book-img.svg') }}" alt="book-img.svg">
+
+            </div>
+            <form action="{{ url_for('make_appointment') }}" method="POST">
+                <h3>Book Appointment</h3>
+                <label for="nic_number" style="font-size: 18px;"> Enter Your NIC Number:</label>
+                    <input type="text" id="nic_number" name="nic_number" class="box"><br>
+                    <button type="button" id="fetchDetailsBtn" class="submit-btn">Fetch Details</button>
+                    <br>
+                    <br>
+                    <input type="text" name="first_name" id="first_name" placeholder="First Name" class="box" ><br>
+                    <input type="text" name="last_name" id="last_name" placeholder="Last Name" class="box" ><br>
+                    <input type="text" name="gender" id="gender" placeholder="Gender" class="box" ><br>
+                    <input type="text" name="age" id="age" placeholder="Age" class="box" ><br>
+                    <input type="tel" name="telephone" id="telephone" placeholder="Telephone" class="box" ><br>
+                    <input type="email" name="email" id="email" placeholder="Your Email" class="box" ><br>
+                    <input type="date" name="date" id="date" class="box" required><br>
+                    <label for="time" style="font-size: 18px;">Select a Time:</label><br>
+                    <select id="time" name="time" class="box" required>
+                    <option value="18:00">06:00 PM</option>
+                    <option value="18:30">06:30 PM</option>
+                    <option value="19:00">07:00 PM</option>
+                    <option value="19:30">07:30 PM</option>
+                    <option value="20:00">08:00 PM</option>
+                    <option value="20:30">08:30 PM</option>
+                </select><br>
+
+                <input type="submit" value="Book Now" class="btn">
+            </form>
+            
+        </div>
+    </section>
+
+    <!--fetch patient details for make appointments-->
+    <script>
+       document.getElementById('fetchDetailsBtn').addEventListener('click', function() {
+        var nicNumber = document.getElementById('nic_number').value;
+
+        fetchPatientDetails(nicNumber)
+            .then(function(patient) {
+                document.getElementById('first_name').value = patient.first_name;
+                document.getElementById('last_name').value = patient.last_name;
+                document.getElementById('gender').value = patient.gender;
+                document.getElementById('age').value = patient.age;
+                document.getElementById('telephone').value = patient.telephone;
+                document.getElementById('email').value = patient.email;
+                document.getElementById('patientDetails');
+            })
+            
+    });
+
+    function fetchPatientDetails(nicNumber) {
+        return fetch('/fetch_patient_details', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nic_number: nicNumber })
+        })
+        .then(response => response.json());
+    }
+    </script>
+    
+</body>
+</html>

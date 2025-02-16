@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOCTOR DASHBOARD</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="mySidebarContainer">
+        <div class="sidebar" id="mySidebar">
+            <h2></h2>
+            <ul>
+                <li><a href="/index"><i class="fas fa-prescription-bottle"></i> Medications</a></li>
+                <li><a href="/prescription"><i class="fa fa-file"></i> Prescriptions</a></li>
+                <li><a href="http://127.0.0.1:8000/join/"><i class="fas fa-tv"></i> Consultation</a></li>
+                <li><a href="/records"><i class="fa fa-user"></i> Patients</a></li>
+                
+                <li>
+                    <a href="#" onclick="logout(event)"><i class="fa fa-sign-out"></i> Logout</a>
+                    <form id="logoutForm" action="{{ url_for('logout') }}" method="post" style="display: none;">
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    
+
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!--Logout function-->
+    <script>
+        function logout(event) {
+            event.preventDefault();
+            document.getElementById('logoutForm').submit(); 
+        }
+    </script>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

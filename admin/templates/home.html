@@ -1,0 +1,432 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN DASHBOARD</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+     <!-- Material Icons -->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <div class="grid-container">
+
+        <main class="main-container">
+        
+            
+      
+          <div class="main-cards">
+  
+            <div class="card">
+              <div class="card-inner">
+                  <h3>Total Patients</h3>
+                  <span class="material-icons-outlined">person</span>
+
+              </div>
+              <h1 id="patientCount" style="margin-bottom: 80px;"></h1>
+          </div>
+  
+          <div class="card">
+            <div class="card-inner">
+                <h3 >Remaining Appointments</h3>
+                <span class="material-icons-outlined">hourglass_empty</span>
+            </div>
+            <h1 id="todayAppointmentsCount" style="margin-bottom: 80px;"></h1>
+        </div>
+
+        <div class="card">
+          <div class="card-inner">
+            <h3>Finished Appointments</h3>
+            <span class="material-icons-outlined">check_circle</span>
+          </div>
+          <h1 id="finishedAppointmentsCount" style="margin-left: 20px;"> </h1>
+          <button id="viewFinishedAppointments">View Details</button>
+        </div>
+        
+  
+        <div class="card">
+            <div class="card-inner">
+                <h3>Cancelled Appointments</h3>
+                <span class="material-icons-outlined">highlight_off</span>
+            </div>
+            <h1 id="cancelledCount" style="margin-left: 20px;"></h1>
+            <button id="viewCancelledAppointments">View Details</button>
+        </div>
+        
+
+        <div id="cancelledAppointmentsPopup" class="popup">
+            <div class="popup-content">
+                <span class="close">&times;</span>
+                <div id="cancelledAppointmentsTableContainer"></div>
+            </div>
+        </div>
+
+
+
+      <div id="popupContainer" style="display: none;">
+
+       <table id="finishedAppointmentsTable">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NIC Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+      
+
+      
+  </div>
+  
+          <div class="container">
+              <div class="calendar-container">
+                  <div id="calendar"></div>
+              </div>
+              <div class="details-container">
+                  <div id="appointment-details"></div>
+              </div>
+          </div>
+
+          <div class="charts">
+            <div class="charts-card">
+                <h2 class="chart-title">Patient Count Over Month</h2>
+          <canvas id="lineChart" width="800" height="400"></canvas>
+        </div>
+    </div>
+  
+        </main>
+  
+      </div>
+  
+
+      <script>
+
+          // Display the calendar in month view------------------------------------//
+          document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth', 
+        events: '/appointments',
+        eventClick: function(info) {
+
+
+
+            // Fetch appointment details using the appointment ID-------------------------------//
+            fetch('/appointment/' + info.event.id)
+                .then(response => response.json())
+                .then(data => {
+                    var details = document.getElementById('appointment-details');
+                    details.innerHTML = `
+                        <h2 style="text-align:center; color: black;">Appointment Details</h2>
+                        <p><span class="label">ID:</span> <span class="value">${data.id}</span></p>
+                        <p><span class="label">NIC Number:</span> <span class="value">${data.nic_number}</span></p>
+                        <p><span class="label">First Name:</span> <span class="value">${data.first_name}</span></p>
+                        <p><span class="label">Last Name:</span> <span class="value">${data.last_name}</span></p>
+                        <p><span class="label">Gender:</span> <span class="value">${data.gender}</span></p>
+                        <p><span class="label">Age:</span> <span class="value">${data.age}</span></p>
+                        <p><span class="label">Telephone:</span> <span class="value">${data.telephone}</span></p>
+                        <p><span class="label">Email:</span> <span class="value">${data.email}</span></p>
+                        <p><span class="label">Date:</span> <span class="value">${data.date}</span></p>
+                        <p><span class="label">Time:</span> <span class="value">${data.time}</span></p>
+
+                        <button id="finishButton">Finished</button>
+                    `;
+                    
+                    var finishButton = document.getElementById('finishButton');
+                    finishButton.addEventListener('click', function() {
+                        fetch('/mark_as_finished/' + data.id, { method: 'POST' })
+                            .then(response => {
+                                if (response.ok) {
+                                    info.event.remove();
+                                    details.innerHTML += '<p style="color: green;">Appointment marked as finished.</p>';
+                                } else {
+                                    console.error('Error marking appointment as finished:', response.statusText);
+                                }
+                            })
+                            .catch(error => console.error('Error marking appointment as finished:', error));
+                    });
+                })
+                .catch(error => console.error('Error fetching appointment details:', error));
+        },
+    });
+    calendar.render();
+});
+
+
+
+        // Fetch the patient counts----------------------------------------//
+        $(document).ready(function() {
+            -
+            $.ajax({
+                url: '/get_counts',
+                type: 'GET',
+                success: function(data) {
+                    $('#patientCount').text(data.patient_count);
+                },
+                error: function(error) {
+                    console.error('Error fetching counts:', error);
+                }
+            });
+        });
+
+
+
+        // Fetch the cancelled counts-------------------------------------//
+        $(document).ready(function() {
+            
+            $.ajax({
+                url: '/cancelled_counts',
+                type: 'GET',
+                success: function(data) {
+                
+                    $('#cancelledCount').text(data.cancelled_count);
+                },
+                error: function(error) {
+                    console.error('Error fetching counts:', error);
+                }
+            });
+        });
+
+       
+
+        // fetch the count of today's appointments------------------------------------------//
+        $(document).ready(function() {
+        
+        $.ajax({
+            url: '/today_appointments_count',
+            type: 'GET',
+            success: function(data) {
+            
+                $('#todayAppointmentsCount').text(data.today_appointments_count);
+            },
+            error: function(error) {
+                console.error('Error fetching today\'s appointments count:', error);
+            }
+        });
+    });
+
+
+
+     // fetch the count of today's finished appointments ------------------------------------//
+    $(document).ready(function() {
+       
+        $.ajax({
+            url: '/finished_appointments_count',
+            type: 'GET',
+            success: function(data) {
+                
+                $('#finishedAppointmentsCount').text(data.finished_appointments_count);
+            },
+            error: function(error) {
+                console.error('Error fetching today\'s appointments count:', error);
+            }
+        });
+    });
+
+    
+
+    // Function to fetch finished appointment details---------------------------------------//
+    $(document).ready(function() {
+  
+    function fetchFinishedAppointments() {
+        $.ajax({
+            url: '/get_finished_appointments',
+            type: 'GET',
+            success: function(data) {
+                console.log('Finished appointments data:', data); 
+                var appointments = data.finished_appointments;
+                console.log('Appointments:', appointments); 
+                var tableBody = $('#finishedAppointmentsTable tbody');
+                tableBody.empty(); 
+                $.each(appointments, function(index, appointment) {
+                    console.log('Appointment:', appointment);
+                    var row = $('<tr>');
+                    row.append($('<td>').text(appointment.id));
+                    row.append($('<td>').text(appointment.nic_number));
+                    row.append($('<td>').text(appointment.first_name));
+                    row.append($('<td>').text(appointment.last_name));
+                    row.append($('<td>').text(appointment.gender));
+                    row.append($('<td>').text(appointment.age));
+                    row.append($('<td>').text(appointment.telephone));
+                    row.append($('<td>').text(appointment.email));
+                    row.append($('<td>').text(appointment.time));
+                    tableBody.append(row);
+                });
+            },
+            error: function(error) {
+                console.error('Error fetching finished appointments:', error);
+            }
+        });
+    }
+
+
+
+    // Popup for view finished appointments--------------------------------------------------//
+    $('#viewFinishedAppointments').click(function() {
+
+        fetchFinishedAppointments();
+        // Show the popup overlay and container
+        $('#popupOverlay, #popupContainer').show();
+    });
+
+    // Hide popup when clicking outside of the container
+    $(document.body).on('click', function(event) {
+        if (!$(event.target).closest('#popupContainer').length && !$(event.target).is('#viewFinishedAppointments')) {
+            $('#popupOverlay, #popupContainer').hide();
+        }
+    });
+
+    // Prevent clicks inside the popup container from closing it
+    $('#popupContainer').on('click', function(event) {
+        event.stopPropagation();
+    });
+});
+
+
+
+// Function to check if an element is a descendant of another element----------------------------------//
+function isDescendant(parent, child) {
+        var node = child.parentNode;
+        while (node != null) {
+            if (node == parent) {
+                return true;
+            }
+            node = node.parentNode;
+        }
+        return false;
+    }
+
+
+
+    // view cancelled appointments---------------------------------------------------------------------//
+    document.getElementById("viewCancelledAppointments").addEventListener("click", function () {
+        
+        fetch('/cancelled-appointments')
+            .then(response => response.json())
+            .then(data => {
+                var container = document.getElementById("cancelledAppointmentsTableContainer");
+
+                container.innerHTML = '';
+
+                var table = document.createElement("table");
+                table.border = 1;
+
+                var header = table.createTHead();
+                var row = header.insertRow();
+                for (var key in data.cancelled_data_today[0]) {
+                    var th = document.createElement("th");
+                    th.textContent = key;
+                    row.appendChild(th);
+                }
+
+                for (var i = 0; i < data.cancelled_data_today.length; i++) {
+                    var rowData = data.cancelled_data_today[i];
+                    var row = table.insertRow();
+                    for (var key in rowData) {
+                        var cell = row.insertCell();
+                        cell.textContent = rowData[key];
+                    }
+                }
+
+                container.appendChild(table);
+
+                document.getElementById("cancelledAppointmentsPopup").style.display = "block";
+            })
+            .catch(error => console.log(error));
+    });
+
+    // Hide popup when clicking outside of the container
+    document.addEventListener("click", function (event) {
+        var popupContainer = document.getElementById("cancelledAppointmentsPopup");
+        if (event.target != popupContainer && !isDescendant(popupContainer, event.target)) {
+            popupContainer.style.display = "none";
+        }
+    });
+
+
+
+    //Patient count progress chart---------------------------------------//
+document.addEventListener('DOMContentLoaded', function () {
+            fetch('/patient_data')
+            .then(response => response.json())
+            .then(data => {
+                var ctx = document.getElementById('lineChart').getContext('2d');
+                var lineChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: data.months,
+        datasets: [{
+            label: 'Patient Count Progress',
+            data: data.counts,
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',  //chart line color - blue
+            borderWidth: 3
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    color: 'rgba(0, 0, 0, 1)',
+                    font: {
+                        weight: 'bold',
+                        size: 16, 
+                        family: 'Arial'
+                    }
+                }
+            },
+            x: {
+                ticks: {
+                    color: 'rgba(0, 0, 0, 1)',
+                    font: {
+                        weight: 'bold',
+                        size: 14, 
+                        family: 'Arial'
+                    }
+                }
+            }
+        },
+        title: {
+            display: true,
+            text: 'Patient Count Over Month',
+            font: {
+                family: "Arial",
+                size: 14,
+                weight: "bold"
+            }
+        }
+    }
+});
+
+            });
+        });
+
+
+
+    </script>
+    
+</body>
+</html>
+{% endblock %}

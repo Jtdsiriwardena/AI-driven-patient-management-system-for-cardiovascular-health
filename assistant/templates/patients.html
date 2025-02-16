@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/patients.css') }}">
+</head>
+<body>
+    <h1>Patients</h1>
+
+    <input type="text" id="searchInput" placeholder="&#128269; Search by NIC Number..." onkeyup="searchTable()">
+
+    <div class="box">
+    <table>
+        <thead>
+            <tr>
+                <th>NIC Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Telephone</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients_data %}
+            <tr>
+                <td>{{ patient.nic_number }}</td>
+                <td>{{ patient.first_name }}</td>
+                <td>{{ patient.last_name }}</td>
+                <td>{{ patient.gender }}</td>
+                <td>{{ patient.age }}</td>
+                <td>{{ patient.telephone }}</td>
+                <td>{{ patient.email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+    <script>
+
+        // Search by NIC number
+        function searchTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+        
+            table = document.querySelector("table");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0]; // NIC Number column
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+    
+</body>
+</html>
+{% endblock %}

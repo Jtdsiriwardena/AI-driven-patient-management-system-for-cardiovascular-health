@@ -1,0 +1,241 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 0;
+  background-color: #e5e4e4;
+}
+
+
+.container {
+    max-width: 1500px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+
+h1 {
+    margin-bottom: 20px;
+}
+
+
+.menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+}
+
+.menu li {
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    position: relative;
+    margin-left: 30px;
+    margin-top: 20px;
+    padding: 10px; 
+    background-color: transparent; 
+    transition: color 0.3s ease;
+    border: 2px solid transparent; 
+    border-radius: 5px;
+}
+
+.menu li:hover {
+    color: #ffffff; 
+    background-color: rgb(0, 0, 0); 
+    border-color: black; 
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+
+
+#normal th {
+  background-color: #85c0e8;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+
+#arr th {
+  background-color: #96e5b7;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+
+#myo th {
+  background-color: #ecb6b0;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+
+
+
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+tr:hover {
+    background-color: #f1ff71;
+    color: #000000;
+    font-weight: bold;
+}
+
+
+td:first-child {
+    font-weight: bold;
+}
+
+
+td:last-child {
+    font-style: italic;
+}
+
+
+
+
+.main-record{
+    margin-top:20px ;
+    text-transform: capitalize;
+  }
+  .record-box{
+    width: 100%;
+    height: auto;
+    padding: 10px 10px 30px 10px;
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+
+
+#normalLink {
+  background-color: #3498db; 
+}
+
+
+#arrLink {
+  background-color: #2ecc71; 
+}
+
+
+#myoLink {
+  background-color: #e74c3c; 
+}
+
+
+
+.toggle-item  {
+  list-style: none; 
+  display: inline-block; 
+  margin-right: 10px; 
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  color: #fff;
+  cursor: pointer;
+}
+
+
+ 
+.record-box .record{
+    display: flex;
+  }
+
+  .box{
+    width: 33%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background: rgb(235, 233, 233);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+  .box p{
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .box button{
+    background: #000;
+    color: #fff;
+    padding: 7px 10px;
+    border-radius: 10px;
+    margin-top: 3rem;
+    cursor: pointer;
+  }
+  .box button:hover{
+    background: rgba(0, 0, 0, 0.842);
+  }
+  .box i{
+    font-size: 7rem;
+    float: right;
+    margin: -20px 20px 20px 0;
+  }
+
+
+  
+
+ a:link {
+  color: black;
+  text-decoration: none; 
+}
+
+
+a:visited {
+  color: black;
+  text-decoration: none; 
+}
+
+
+a:hover {
+  color: rgb(0, 0, 0);
+  text-decoration: underline; 
+}
+
+
+
+
+#searchInput {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 300px;
+  transition: all 0.3s ease;
+  outline: none;
+  border-radius: 12px;
+}
+
+#searchInput:focus {
+  border-color: dodgerblue;
+  box-shadow: 0 0 5px dodgerblue;
+}
+
+
+::placeholder {
+  color: #aaa;
+}

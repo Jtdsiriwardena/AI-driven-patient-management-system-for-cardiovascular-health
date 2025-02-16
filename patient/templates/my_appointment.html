@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Appointments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/myAppointment.css') }}">
+</head>
+<body>
+    <div class="appointment-columns">
+        {% for item in appointments %}
+        <div class="appointment-card">
+            <ul>
+                <li><strong>ID:</strong> {{ item[0] }}</li>
+                <li><strong>NIC:</strong> {{ item[1] }}</li>
+                <li><strong>First Name:</strong> {{ item[2] }}</li>
+                <li><strong>Last Name:</strong> {{ item[3] }}</li>
+                <li><strong>Date:</strong> {{ item[4] }}</li>
+                <li><strong>Time:</strong> {{ item[5] }}</li>
+            </ul>
+            <form action="{{ url_for('cancel_appointment', appointment_id=item[0]) }}" method="post">
+                <button type="submit">Cancel</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

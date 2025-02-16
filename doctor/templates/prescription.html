@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/prescription.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="column">
+            <div class="sub-column">
+                <form action="/add_prescription" method="post">
+                    <h2 style="text-align: center;">Enter Patient's NIC Number</h2>
+                    <label for="nic_number">NIC Number:</label><br>
+                    <input type="text" id="nic_number" name="nic_number"><br>
+                    <button type="button" id="fetchButton">Fetch</button>
+            </div>
+            <div class="sub-column">
+                <h2 style="text-align: center;">Patient Details</h2>
+                <label for="first_name">First Name:</label><br>
+        <input type="text" id="first_name" name="first_name"><br>
+        
+        <label for="last_name">Last Name:</label><br>
+        <input type="text" id="last_name" name="last_name"><br>
+
+        <label for="last_name">Gender:</label><br>
+        <input type="text" id="gender" name="gender"><br>
+
+        <label for="last_name">Telephone:</label><br>
+        <input type="text" id="telephone" name="telephone"><br>
+
+        <label for="last_name">Age:</label><br>
+        <input type="text" id="age" name="age"><br>
+
+        <label for="last_name">Email:</label><br>
+        <input type="text" id="email" name="email"><br>
+            </div>
+        </div>
+
+        <div class="med-column">
+            <h2 style="text-align: center;">Medications</h2>
+            
+            <div class="med">
+                <div class="med-header" onclick="toggleMedication(this)">
+                    <span class="arrow">▼</span> Medication 1
+                </div>
+            <div class="med-content">
+            <label for="medication1">Medication:</label><br>
+            <select id="medication1" name="medication1">
+            <option value="None">None</option>
+            <option value="Aspirin">Aspirin</option>
+            <option value="Atorvastatin">Atorvastatin</option>
+            <option value="Metoprolol">Metoprolol</option>
+            <option value=" Lisinopri"> Lisinopri</option>
+            <option value="Valsartan">Valsartan</option>
+            <option value="Hydrochlorothiazide">Hydrochlorothiazide</option>
+            </select><br>
+    
+            <label for="dosage1">Dosage (mg):</label><br>
+            <input type="text" id="dosage1" name="dosage1"><br>
+    
+            <label>Times :</label><br>
+<label><input type="checkbox" name="times1M" value="Morning"> Morning</label><br>
+<label><input type="checkbox" name="times1A" value="Afternoon"> Afternoon</label><br>
+<label><input type="checkbox" name="times1N" value="Night"> Night</label><br>
+
+            <br>
+            <br>
+            </div>
+        </div>
+    
+        <div class="med">
+            <div class="med-header" onclick="toggleMedication(this)">
+                <span class="arrow">▼</span> Medication 2
+            </div>
+        <div class="med-content">
+            <label for="medication2">Medication:</label><br>
+            <select id="medication2" name="medication2">
+                <option value="None">None</option>
+                <option value="Aspirin">Aspirin</option>
+                <option value="Atorvastatin">Atorvastatin</option>
+                <option value="Metoprolol">Metoprolol</option>
+                <option value=" Lisinopri"> Lisinopri</option>
+                <option value="Valsartan">Valsartan</option>
+                <option value="Hydrochlorothiazide">Hydrochlorothiazide</option>
+            </select><br>
+    
+            <label for="dosage2">Dosage (mg):</label><br>
+            <input type="text" id="dosage2" name="dosage2"><br>
+    
+            <label>Times :</label><br>
+                <label><input type="checkbox" name="times2M" value="Morning"> Morning</label><br>
+                <label><input type="checkbox" name="times2A" value="Afternoon"> Afternoon</label><br>
+                <label><input type="checkbox" name="times2N" value="Night"> Night</label><br>
+                <br>
+                <br>
+                </div>
+            </div>
+    
+            <div class="med">
+                <div class="med-header" onclick="toggleMedication(this)">
+                    <span class="arrow">▼</span> Medication 3
+                </div>
+            <div class="med-content">
+            <label for="medication3">Medication:</label><br>
+            <select id="medication3" name="medication3">
+                <option value="None">None</option>
+                <option value="Aspirin">Aspirin</option>
+                <option value="Atorvastatin">Atorvastatin</option>
+                <option value="Metoprolol">Metoprolol</option>
+                <option value=" Lisinopri"> Lisinopri</option>
+                <option value="Valsartan">Valsartan</option>
+                <option value="Hydrochlorothiazide">Hydrochlorothiazide</option>
+            </select><br>
+    
+            <label for="dosage3">Dosage (mg):</label><br>
+            <input type="text" id="dosage3" name="dosage3"><br>
+    
+            <label>Times :</label><br>
+                <label><input type="checkbox" name="times3M" value="Morning"> Morning</label><br>
+                <label><input type="checkbox" name="times3A" value="Afternoon"> Afternoon</label><br>
+                <label><input type="checkbox" name="times3N" value="Night"> Night</label><br>
+                <br>
+                <br>
+                </div>
+            </div>
+
+            <div class="med">
+                <div class="med-header" onclick="toggleMedication(this)">
+                    <span class="arrow">▼</span> Medication 4
+                </div>
+            <div class="med-content">
+            <label for="medication4">Medication:</label><br>
+            <select id="medication4" name="medication4">
+                <option value="None">None</option>
+                <option value="Aspirin">Aspirin</option>
+                <option value="Atorvastatin">Atorvastatin</option>
+                <option value="Metoprolol">Metoprolol</option>
+                <option value=" Lisinopri"> Lisinopri</option>
+                <option value="Valsartan">Valsartan</option>
+                <option value="Hydrochlorothiazide">Hydrochlorothiazide</option>
+            </select><br>
+    
+            <label for="dosage4">Dosage (mg):</label><br>
+            <input type="text" id="dosage4" name="dosage4"><br>
+    
+            <label>Times :</label><br>
+                <label><input type="checkbox" name="times4M" value="Morning"> Morning</label><br>
+                <label><input type="checkbox" name="times4A" value="Afternoon"> Afternoon</label><br>
+                <label><input type="checkbox" name="times4N" value="Night"> Night</label><br>
+                <br>
+                <br>
+                </div>
+            </div>
+            </div>
+        
+        <div class="column">
+            <div class="sub-column">
+                <h2 style="text-align: center;">Additional Medications</h2>
+                <label for="lifestyle1">Additional Medications:</label><br>
+        <textarea id="additional" name="additional" rows="4" style="width: 400px;"></textarea>
+            </div>
+            <div class="sub-column">
+                <h2 style="text-align: center;">Other Informations</h2>
+                <label for="lifestyle1">Lifestyle Recommendations:</label><br>
+        <textarea id="lifestyle" name="lifestyle" rows="4" style="width: 400px;"></textarea>
+        
+        <label for="lifestyle2">Emergency:</label><br>
+        <textarea id="emergency" name="emergency" rows="4" style="width: 400px;"></textarea>
+        
+        <label for="doc_name">Doctor's Name:</label><br>
+        <input type="text" id="doc_name" name="doc_name" value="DR: {{ session['first_name'] }}"> <br>
+
+        <label for="date">Date:</label><br>
+        <input type="date" id="date" name="date"><br>
+        <input type="submit" value="Submit">
+            </div>
+            
+        </form>
+        </div>
+    </div>
+
+
+<!--Fetch patients details-->
+<script>
+    document.getElementById("date").value = new Date().toISOString().slice(0,10);
+
+    document.getElementById("fetchButton").addEventListener("click", function() {
+var nicNumber = document.getElementById("nic_number").value;
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "/fetch_patient_details?nic_number=" + nicNumber, true);
+xhr.onreadystatechange = function() {
+if (xhr.readyState == 4 && xhr.status == 200) {
+    var patientDetails = JSON.parse(xhr.responseText);
+    document.getElementById("first_name").value = patientDetails.first_name;
+    document.getElementById("last_name").value = patientDetails.last_name;
+    document.getElementById("gender").value = patientDetails.gender;
+    document.getElementById("telephone").value = patientDetails.telephone;
+    document.getElementById("age").value = patientDetails.age;
+    document.getElementById("email").value = patientDetails.email;
+}
+};
+xhr.send();
+});
+
+//toggle for medications section
+function toggleMedication(element) {
+            var content = element.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                element.querySelector('.arrow').innerHTML = '▼';
+            } else {
+                content.style.display = "block";
+                element.querySelector('.arrow').innerHTML = '▲';
+            }
+        }
+</script>
+
+</body>
+</html>
+{% endblock %}

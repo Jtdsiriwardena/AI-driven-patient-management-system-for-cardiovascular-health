@@ -1,0 +1,115 @@
+body {
+    background-color: #375d50;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+
+/*complete container*/
+.container {
+    max-width: 600px;
+    height: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+
+/*I am the cardio bot heading*/
+h1 {
+        text-align: center;
+        color: #287450;
+        font-size: 34px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    
+}
+
+
+/*chat area container*/
+.chat-container {
+    overflow-y: auto;
+    max-height: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.user-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+.bot-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+.user-msg, .bot-msg {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+}
+.user-msg {
+    background-color: #2ca472;
+    color: #fff;
+}
+.bot-msg {
+    background-color: #f0f0f0;
+}
+
+
+/*Enter your message area and send area*/
+.form-group {
+    display: flex;
+}
+.form-group input {
+    flex: 1;
+    margin-right: 10px;
+}
+#send_btn {
+    min-width: 100px;
+    background-color: rgb(13, 126, 86);
+}
+
+
+
+/* I am the cardio bot */
+.wrapper {
+    height: 10vh;
+    display: grid;
+    place-items: center;
+  }
+  
+  .typing-demo {
+    width: 22ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate; /*typing for 2 secs and blick for 0.5 secs*/
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 2em;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }

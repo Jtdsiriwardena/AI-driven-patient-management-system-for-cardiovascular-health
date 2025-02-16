@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}"> 
+    <title>User Profile</title>
+
+</head>
+<body>
+    <div class="container">
+
+        <!--User profile heading and welcome name-->
+        <div class="profile-header">
+            <h1 style="text-align: center;">User Profile</h1>
+            <h3><i class="fas fa-user"></i>  Welcome, {{ logged_user_first_name }}!</h3>
+            <a href="{{ url_for('dashboard') }}" class="cross-icon"><i class="fas fa-times"></i></a>
+        </div>
+
+        <!--user details-->
+        <div class="profile-info">
+            <p><i class="fas fa-envelope"></i>  Your email: {{ logged_user_email }}</p>
+            <p><i class="fas fa-user"></i>   Last Name: {{ last_name }}</p>
+            <p><i class="fas fa-venus-mars"></i>   Gender: {{ gender }}</p>
+            <p><i class="fas fa-calendar-alt"></i>  Age: {{ age }}</p>
+            <p><i class="fas fa-phone"></i>  Telephone: {{ telephone }}</p>
+            <p><i class="fas fa-lock"></i>  Password: {{ password }}  <a id="change-password">Change password?</a></p>
+        </div>
+
+        <!--password area-->
+        <div class="password-form" style="display: none;">
+            <form action="/update_password" method="post">
+                <label for="new_password">New Password:</label>
+                <input type="password" id="new_password" name="new_password" required>
+                <button type="submit">Update Password</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+body{
+  background-color: #ededed;
+}
+
+.heading {
+    position: absolute;
+    top: 1px;
+    right: 40px;
+    font-size: 14px;
+  }
+
+
+   label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+
+input[type="text"] {
+    width: calc(100% - 12px); 
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #000; 
+    border-radius: 8px; 
+    color: black;
+    font-size: 16px;
+}
+
+
+button[type="submit"] {
+  background-color: #389972; 
+  color: white; 
+  padding: 8px 15px; 
+  font-size: 15px; 
+  border: none; 
+  border-radius: 8px; 
+  cursor: pointer;
+  transition: background-color 0.3s; 
+}
+
+
+button[type="submit"]:hover {
+  background-color: #216e4a;
+}
+
+
+
+form {
+    margin-bottom: 20px;
+}
+
+
+#feedbackData {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.entry {
+    margin-bottom: 20px;
+}
+
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+.my-form {
+  background-color: #ffffff; 
+  padding: 20px; 
+  border-radius: 8px;
+  margin-left: 10px;
+  color: rgb(34, 99, 55);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+
+
+  .search {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 300px;
+    transition: all 0.3s ease;
+    outline: none;
+    border-radius: 12px;
+  }
+  
+  .search:focus {
+    border-color: dodgerblue;
+    box-shadow: 0 0 5px dodgerblue;
+  }
+
+  ::placeholder {
+    color: #aaa;
+  }

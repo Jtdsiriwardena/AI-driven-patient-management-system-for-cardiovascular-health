@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="heading">
+        <h1>{{ session['first_name'] }} <a href="/profile"><span style="font-size: 24px; background-color: #ffcc00; color: white; border: 2px solid #333; border-radius: 50%; padding: 5px;">👤</span></a></h1>
+      </div>
+
+<h1>Medication History</h1>
+<form id="feedbackForm">
+    <label for="nicNumber">NIC Number:</label>
+    <input type="text" id="nicNumber" name="nicNumber" placeholder="&#128269; Search by NIC Number..." class="search">
+    <button type="submit">Submit</button>
+</form>
+
+<div id="feedbackData" style="display: flex;"></div>
+
+
+<!--Fetch prescriptions based on NIC-->
+<script>
+    document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const nicNumber = document.getElementById('nicNumber').value;
+        fetch('/feedback/' + nicNumber)
+            .then(response => response.json())
+            .then(data => {
+                const feedbackDataDiv = document.getElementById('feedbackData');
+                feedbackDataDiv.innerHTML = ''; 
+                Object.keys(data).forEach(date => {
+                    const dateDiv = document.createElement('div');
+                    dateDiv.style.flex = '1'; 
+                    dateDiv.innerHTML = '<h2>' + date + '</h2>';
+                    const entries = data[date];
+                    entries.forEach(entry => {
+                        const entryDiv = document.createElement('div');
+                        entryDiv.innerHTML = '<form class="my-form">' +
+                            '<label><strong>Name:</strong></label>' +
+                            '<input type="text" value="' + entry.first_name + ' ' + entry.last_name + '" disabled><br>' +
+                            ' <br> <br> <label><strong>Medication 1:</strong></label>' +
+                            '<input type="text" value="' + entry.medication1 + '" disabled><br>' +
+                            '<label><strong>Dosage:</strong></label>' +
+                            '<input type="text" value="' + entry.dosage1 + '" disabled><br>' +
+                            '<label><strong>Times:</strong></label>' + 
+                            '<input type="text" value="' + entry.times1M + '  ' + entry.times1A +  '  ' + entry.times1N + '" disabled><br>' +
+                            ' <br> <br> <label><strong>Medication 2:</strong></label>' +
+                            '<input type="text" value="' + entry.medication2 + '" disabled><br>' +
+                            '<label><strong>Dosage:</strong></label>' +
+                            '<input type="text" value="' + entry.dosage2 + '" disabled><br>' +
+                            '<label><strong>Times:</strong></label>' +
+                            '<input type="text" value="' + entry.times2M + '  ' + entry.times2A +  '  ' + entry.times2N + '" disabled><br>' +
+                            '<br> <br> <label><strong>Medication 3:</strong></label>' +
+                            '<input type="text" value="' + entry.medication3 + '" disabled><br>' +
+                            '<label><strong>Dosage:</strong></label>' +
+                            '<input type="text" value="' + entry.dosage3 + '" disabled><br>' +
+                            '<label><strong>Times:</strong></label>' +
+                            '<input type="text" value="' + entry.times3M + '  ' + entry.times3A +  '  ' + entry.times3N + '" disabled><br>' +
+                            '<br> <br> <label><strong>Additional:</strong></label>' +
+                            '<input type="text" value="' + entry.additional + '" disabled><br>' +
+                            '</form>';
+
+
+                        dateDiv.appendChild(entryDiv);
+                    });
+                    feedbackDataDiv.appendChild(dateDiv);
+                });
+            })
+            .catch(error => console.error('Error fetching feedback data:', error));
+    });
+
+</script>
+</body>
+</html>
+{% endblock %}

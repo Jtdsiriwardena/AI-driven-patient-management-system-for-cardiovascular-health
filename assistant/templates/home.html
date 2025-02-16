@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEDICAL ASSISTANTS</title>
+  
+  <!-- Montserrat Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="heading">
+      <h1>{{ session['first_name'] }} <a href="/profile"><span style="font-size: 24px; background-color: #ffcc00; color: white; border: 2px solid #333; border-radius: 50%; padding: 5px;">👤</span></a></h1>
+    </div>
+    <br>
+    <br>
+    <div class="grid-container">
+  
+      <main class="main-container">
+
+
+<!--Filter area-->
+<div class="filters">
+  <label for="start-date">Start Date:</label>
+  <input type="date" id="start-date" name="start-date">
+  <label for="end-date">End Date:</label>
+  <input type="date" id="end-date" name="end-date">
+</div>
+
+<div id="total-count" class="total-count"></div>
+
+
+
+<!--Bar chart-->
+<div class="charts">
+  <div class="charts-card">
+      <h2 class="chart-title">Prediction Count</h2>
+      <canvas id="barChart"  style="margin-left: 275px;" width="1000" height="600"></canvas>
+  </div>
+</div>
+        <br>
+        <br>
+  
+
+
+        <!--gender charts-->
+        <div class="charts">
+          <div class="gen-area">
+            <h2 class="chart-title">Gender Distribution</h2>
+    
+            <div class="charts-container">
+              <div class="gender-card">
+                <h3 style="margin-left: 100px;">Normal</h3>
+                <canvas id="normalPieChartCanvas" width="280" height="280" > </canvas> 
+              </div>
+             <div class="gender-card">
+                <h3 style="margin-left: 70px;">Myocardial Infarction</h3>
+                <canvas id="historyOfMiPieChartCanvas" width="280" height="280"></canvas> 
+              </div> 
+              <div class="gender-card"> 
+                <h3 style="margin-left: 80px;">Arrhythmia</h3>
+                <canvas id="arrhythmiaPieChartCanvas" width="280" height="280"></canvas>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      
+  
+        <br>
+        <br>
+  
+
+
+        <!--age charts-->
+        <div class="age-area">
+        <h2>Age Distribution</h2>
+        <div class="charts-age">
+          
+            <div class="col">
+              <div class="charts-card">
+                <h3 class="chart-title">Arrhythmia</h3>
+                <canvas id="arrhythmiaChart" width="400" height="240"></canvas>
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="col">
+              <div class="charts-card">
+                <h3 class="chart-title">Normal</h3>
+                <canvas id="normalChart" width="400" height="240"></canvas>
+              </div>
+            </div>
+         
+          <div class="row">
+            <div class="col">
+              <div class="charts-card">
+                <h3 class="chart-title">Myocardial Infarction</h3>
+                <canvas id="myocardialInfarctionChart" width="400" height="240"></canvas>
+              </div>
+            </div>
+            <br>
+            <br>
+           
+          </div>
+        </div>
+        </div>
+  
+      </main>
+  
+    </div>
+  
+    
+    <script src="{{ url_for('static', filename='js/count_chart.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/gender_chart.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/age_chart.js') }}"></script>
+  </body>
+  
+
+</html>
+{% endblock %}

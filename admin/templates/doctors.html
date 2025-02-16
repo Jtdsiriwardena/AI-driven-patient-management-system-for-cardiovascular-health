@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='doctor.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300" rel="stylesheet">
+</head>
+<body>
+    <button id="addDoctorBtn" class="form-submit">Add Doctor</button>
+
+    <div id="addDoctorModal" class="modal">
+        <div class="contain">
+            <span class="close">&times;</span>
+            <div class="left-contain">
+            <form action="{{ url_for('add_doctor') }}" method="post" enctype="multipart/form-data" class="form-container">
+
+                <label for="medical_license_number" class="form-label">Medical License Number:</label>
+                <input type="text" id="medical_license_number" name="medical_license_number" class="form-input" required><br>
+                
+                <label for="first_name" class="form-label">First Name:</label>
+                <input type="text" id="first_name" name="first_name" class="form-input" required><br>
+                
+                <label for="last_name" class="form-label">Last Name:</label>
+                <input type="text" id="last_name" name="last_name" class="form-input" required><br>
+                
+                <label for="dob" class="form-label">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" class="form-input" required><br>
+                
+                <label for="gender" class="form-label">Gender:</label>
+                <input type="text" id="gender" name="gender" class="form-input" required><br>
+            </div>
+                <div class="right-contain">
+                    <label for="contact_number" class="form-label">Contact Number:</label>
+                    <input type="text" id="contact_number" name="contact_number" class="form-input" required><br>
+                    
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" id="email" name="email" class="form-input" required><br>
+                    
+                    <label for="specialty" class="form-label">Speciality:</label>
+                    <input type="text" id="specialty" name="specialty" class="form-input" required><br>
+                    
+                    <label for="dea_number" class="form-label">DEA Number:</label>
+                    <input type="text" id="dea_number" name="dea_number" class="form-input" required><br>
+
+                    <label for="dea_number" class="form-label">Password:</label>
+                    <input type="text" id="Password" name="password" class="form-input" required><br>
+                    
+                    <button type="submit" class="form-submit">Add Doctor</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Medical License Number</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date of Birth</th>
+            <th>Gender</th>
+            <th>Contact Number</th>
+            <th>Email</th>
+            <th>Specialty</th>
+            <th>DEA Number</th>
+            <th>Actions</th>
+        </tr>
+        {% for doctor in doctors %}
+        <tr>
+            <td>{{ doctor.id }}</td>
+            <td>{{ doctor.medical_license_number }}</td>
+            <td>{{ doctor.first_name }}</td>
+            <td>{{ doctor.last_name }}</td>
+            <td>{{ doctor.dob }}</td>
+            <td>{{ doctor.gender }}</td>
+            <td>{{ doctor.contact_number }}</td>
+            <td>{{ doctor.email }}</td>
+            <td>{{ doctor.specialty }}</td>
+            <td>{{ doctor.dea_number }}</td>
+            <td>
+
+                <a href="{{ url_for('update_doctor', id=doctor.id) }}">
+                    <button class="update-button">Update</button>
+                </a>
+      
+
+
+                <a href="{{ url_for('delete_doctor', id=doctor.id) }}">
+                    <button class="delete-button">Delete</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table> 
+    
+
+    <script src="{{ url_for('static', filename='js/add_doctor.js') }}"></script>
+</body>
+</html>
+{% endblock %}
