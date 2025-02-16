@@ -73,8 +73,17 @@ This feature enhances **patient engagement** and provides **instant health guida
 ---
 
 ## 📸 Screenshots
-![Dashboard](https://via.placeholder.com/800x400)  
-![ECG Prediction](https://via.placeholder.com/800x400)  
+## ECG prediction
+![Image](https://github.com/user-attachments/assets/b028cd99-fe5a-42da-9884-630121160694) 
+
+## 10 Year CVD prediction
+![Image](https://github.com/user-attachments/assets/e0f53cae-0332-4c5c-b2dd-1931cc81a11e)
+
+## Chatbot for Users
+![Image](https://github.com/user-attachments/assets/11c699e7-982a-494e-92c0-e59469643b15)
+
+## E-Prescription
+![Image](https://github.com/user-attachments/assets/751574a1-88d8-485a-af4f-a50a5e0d2c92)
 
 ---
 
